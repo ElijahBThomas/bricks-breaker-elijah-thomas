@@ -20,16 +20,12 @@ void Game::Reset()
 	ResetBall();
 
 	// TODO #2 - Add this brick and 4 more bricks to the vector
-
-	for (int i = 0; i < bricks.size(); i++)
+	for (int i = 0; i < brick_amount; i++)
 	{
-		bricks[i].width = 10;
-		bricks[i].height = 2;
-		bricks[i].x_position = 0 + (i * 10);
-		bricks[i].y_position = 5;
-		bricks[i].doubleThick = true;
-		bricks[i].color = ConsoleColor::DarkGreen;
+		Box brick;
+		bricks.push_back(brick);
 	}
+	
 }
 
 void Game::ResetBall()
@@ -73,7 +69,17 @@ void Game::Render() const
 	ball.Draw();
 
 	// TODO #3 - Update render to render all bricks
-	brick.Draw();
+
+	for (int i = 0; i < bricks.size(); i++)
+	{
+		bricks[i].width = 10;
+		bricks[i].height = 2;
+		bricks[i].x_position = 0 + (i * 10);
+		bricks[i].y_position = 5;
+		bricks[i].doubleThick = true;
+		bricks[i].color = ConsoleColor::DarkGreen;
+		bricks[i].Draw();
+	}
 
 	Console::Lock(false);
 }
